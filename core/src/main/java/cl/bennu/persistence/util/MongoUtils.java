@@ -6,7 +6,7 @@ import com.mongodb.client.MongoDatabase;
 
 public class MongoUtils {
 
-    private static final String HOST = "192.168.99.100";
+    private static final String HOST = "mongo";
     private static final int PORT = 27017;
 
     public static MongoDatabase getDatabase(DBEnum dbEnum) {
