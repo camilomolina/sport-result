@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface CompetitiveApi {
 
-    String BASE_URI = "/competitives";
+    String BASE_URI = "/api/sport-result/competitives";
 
     @RequestMapping(value = BASE_URI, produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     ResponseEntity<List<Competitive>> getAll();

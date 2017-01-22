@@ -1,33 +1,39 @@
 version: "2"
 
 services:
-  mongo:
-    image: mongo:2.6.12
+  db:
+    image: camilomolina/hsqldb:2.3.4
     ports:
-    - "27017:27017"
+    - "9001:9001"
     volumes:
-    - mongo-data:/data/db
-    - mongo-config:/data/configdb
+    - hsqldb-data:/var/lib/hsqldb/data
 
   user:
     build: user/target/docker
     ports:
-    - "8000:8080"
-    links:
-    - mongo
+    - "8010:8080"
+    - "8710:8787"
+    depends_on:
+    - db
 
   team:
     build: team/target/docker
     ports:
-    - "8001:8080"
-    links:
-    - mongo
+    - "8011:8080"
+    - "8711:8787"
+    depends_on:
+    - db
+
+  competitive:
+    build: competitive/target/docker
+    ports:
+    - "8012:8080"
+    - "8712:8787"
+    depends_on:
+    - db
 
 
 volumes:
-  mongo-data:
-    external: false
-
-  mongo-config:
+  hsqldb-data:
     external: false
 

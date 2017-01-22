@@ -32,6 +32,11 @@
 			<version>0.0.1</version>
 		</dependency>
 		<dependency>
+			<groupId>cl.bennu.security</groupId>
+			<artifactId>common</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>cl.bennu.sport-result</groupId>
 			<artifactId>core</artifactId>
 			<version>0.0.1</version>
@@ -66,6 +71,24 @@
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<target name="copy">
+								<copy file="src/main/docker/Dockerfile" tofile="${project.build.directory}/docker/Dockerfile" />
+								<copy file="target/${project.build.finalName}.jar" tofile="${project.build.directory}/docker/${project.build.finalName}.jar" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>

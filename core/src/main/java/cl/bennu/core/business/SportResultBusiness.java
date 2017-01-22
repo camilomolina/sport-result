@@ -21,7 +21,6 @@ public class SportResultBusiness {
     private SportResultBusiness() {
     }
 
-
     // metodos de usuario
     public List<User> getUserAll() {
         IUserDao userDao = AppFactory.getUserDao();
@@ -85,6 +84,10 @@ public class SportResultBusiness {
         return teamDao.find(team);
     }
 
+    public List<Team> findTeamByUser(String userId) {
+        ITeamDao teamDao = AppFactory.getTeamDao();
+        return teamDao.findByUser(userId);
+    }
 
 
     // metodos de la competicion
@@ -117,5 +120,7 @@ public class SportResultBusiness {
         ICompetitiveDao competitiveDao = AppFactory.getCompetitiveDao();
         return competitiveDao.find(competitive);
     }
+
+
 }
 

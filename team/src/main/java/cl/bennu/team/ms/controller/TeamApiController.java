@@ -5,22 +5,21 @@ import cl.bennu.core.business.SportResultBusiness;
 import cl.bennu.team.ms.api.TeamApi;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @CrossOrigin
-@Controller
+@RestController
 public class TeamApiController implements TeamApi {
 
     @Override
-    public ResponseEntity<List<Team>> getAll() {
-        List<Team> teamList = SportResultBusiness.getInstance().getTeamAll();
-        return new ResponseEntity<>(teamList, HttpStatus.OK);
+    public List<Team> getAll() {
+        return SportResultBusiness.getInstance().getTeamAll();
     }
 
     @Override
@@ -29,21 +28,26 @@ public class TeamApiController implements TeamApi {
     }
 
     @Override
-    public ResponseEntity<Team> getById(@PathVariable("id") String id) {
-        Team team = SportResultBusiness.getInstance().getTeamById(id);
-        return new ResponseEntity<>(team, HttpStatus.OK);
+    public Team getById(@PathVariable("id") String id) {
+        return SportResultBusiness.getInstance().getTeamById(id);
     }
 
     @Override
-    public ResponseEntity<Team> update(@RequestBody Team team) {
+    public Team update(@RequestBody Team team) {
         SportResultBusiness.getInstance().saveTeam(team);
-        return new ResponseEntity<>(team, HttpStatus.OK);
+        return team;
     }
 
     @Override
-    public ResponseEntity<Team> save(@RequestBody Team team, HttpServletRequest request) {
+    public Team save(@RequestBody Team team, HttpServletRequest request) {
         SportResultBusiness.getInstance().saveTeam(team);
-        return new ResponseEntity<>(team, HttpStatus.OK);
+        return team;
     }
+
+    @Override
+    public List<Team> findTeamByUser(@PathVariable("id") String userId) {
+        return SportResultBusiness.getInstance().findTeamByUser(userId);
+    }
+
 
 }

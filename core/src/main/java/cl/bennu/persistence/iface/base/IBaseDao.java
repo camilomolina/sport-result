@@ -13,7 +13,7 @@ public interface IBaseDao<T extends BaseDomain> {
 
     T getByName(String name);
 
-    void save(T rol);
+    void save(T user);
 
     void delete(String id);
 

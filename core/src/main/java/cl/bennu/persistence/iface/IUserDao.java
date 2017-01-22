@@ -5,4 +5,6 @@ import cl.bennu.persistence.iface.base.IBaseDao;
 
 public interface IUserDao extends IBaseDao<User> {
 
+    User getByEMail(String email);
+
 }

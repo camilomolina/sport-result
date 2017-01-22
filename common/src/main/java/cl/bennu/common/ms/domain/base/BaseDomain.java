@@ -1,7 +1,10 @@
 package cl.bennu.common.ms.domain.base;
 
+import javax.persistence.Id;
+
 public class BaseDomain {
 
+    @Id
     private String id;
 
     public String getId() {

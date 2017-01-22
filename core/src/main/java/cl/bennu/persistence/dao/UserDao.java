@@ -6,5 +6,11 @@ import cl.bennu.persistence.iface.IUserDao;
 
 public class UserDao extends BaseDao<User> implements IUserDao {
 
+    @Override
+    public User getByEMail(String email) {
+
+        return null;
+    }
+
 
 }
