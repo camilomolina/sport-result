@@ -1,8 +1,8 @@
-package cl.bennu.user.ms.controller;
+package cl.bennu.auth.ms.controller;
 
+import cl.bennu.auth.ms.api.UserApi;
 import cl.bennu.common.ms.domain.User;
 import cl.bennu.core.business.SportResultBusiness;
-import cl.bennu.user.ms.api.UserApi;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -45,5 +45,6 @@ public class UserApiController implements UserApi {
         SportResultBusiness.getInstance().saveUser(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
 
 }

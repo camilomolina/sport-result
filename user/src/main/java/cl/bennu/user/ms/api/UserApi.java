@@ -1,4 +1,4 @@
-package cl.bennu.user.ms.api;
+package cl.bennu.auth.ms.api;
 
 import cl.bennu.common.ms.domain.User;
 import org.springframework.http.MediaType;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface UserApi {
 
-    String BASE_URI = "/users";
+    String BASE_URI = "/api/users";
 
     @RequestMapping(value = BASE_URI, produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     ResponseEntity<List<User>> getAll();
