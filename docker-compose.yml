@@ -1,12 +1,24 @@
 version: "3"
 
 services:
+
+  #db:
+  #  image: camilomolina/hsqldb:2.3.4
+  #  ports:
+  #  - "9001:9001"
+  #  volumes:
+  #  - hsqldb-data:/var/lib/hsqldb/data
+  # restart: always
   db:
-    image: camilomolina/hsqldb:2.3.4
+    image: mysql:5.7.17
     ports:
-    - "9001:9001"
+    - "3306:3306"
     volumes:
-    - hsqldb-data:/var/lib/hsqldb/data
+    - mysql-data:/var/lib/mysql
+    environment:
+    - MYSQL_PASSWORD=11042.
+    - MYSQL_USER=root
+    restart: always
 
   user:
     build: user/target/docker
@@ -35,5 +47,8 @@ services:
 
 volumes:
   hsqldb-data:
+    external: false
+
+  mysql-data:
     external: false
 
